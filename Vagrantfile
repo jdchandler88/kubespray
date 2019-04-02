@@ -28,8 +28,10 @@ SUPPORTED_OS = {
 }
 
 # Defaults for config options defined in CONFIG
-$num_instances = 3
 $instance_name_prefix = "k8s"
+$k8s_etcd_instance_name_prefix = $instance_name_prefix + "-etcd"
+$k8s_master_instance_name_prefix = $instance_name_prefix + "-master"
+$k8s_node_instance_name_prefix = $instance_name_prefix + "-node"
 $vm_gui = false
 $vm_memory = 2048
 $vm_cpus = 1
@@ -40,12 +42,14 @@ $os = "ubuntu1804"
 $network_plugin = "flannel"
 # Setting multi_networking to true will install Multus: https://github.com/intel/multus-cni
 $multi_networking = false
-# The first three nodes are etcd servers
-$etcd_instances = $num_instances
-# The first two nodes are kube masters
-$kube_master_instances = $num_instances == 1 ? $num_instances : ($num_instances - 1)
-# All nodes are kube nodes
-$kube_node_instances = $num_instances
+# Three nodes are etcd servers
+$etcd_instances = 3
+# Two nodes are kube masters
+$kube_master_instances = 2
+# Three nodes are kube nodes
+$kube_node_instances = 3
+#sum up the number of nodes so vagrant can create the appropriate number
+$num_instances = $etcd_instances + $master_instances + $node_instances;
 # The following only works when using the libvirt provider
 $kube_node_instances_with_disks = false
 $kube_node_instances_with_disks_size = "20G"
@@ -202,9 +206,9 @@ Vagrant.configure("2") do |config|
           ansible.host_vars = host_vars
           #ansible.tags = ['download']
           ansible.groups = {
-            "etcd" => ["#{$instance_name_prefix}-[1:#{$etcd_instances}]"],
-            "kube-master" => ["#{$instance_name_prefix}-[1:#{$kube_master_instances}]"],
-            "kube-node" => ["#{$instance_name_prefix}-[1:#{$kube_node_instances}]"],
+            "etcd" => ["#{$k8s_etcd_instance_name_prefix}-[1:#{$etcd_instances}]"],
+            "kube-master" => ["#{$k8s_master_instance_name_prefix}-[1:#{$kube_master_instances}]"],
+            "kube-node" => ["#{$k8s_node_instance_name_prefix}-[1:#{$kube_node_instances}]"],
             "k8s-cluster:children" => ["kube-master", "kube-node"],
           }
         end
