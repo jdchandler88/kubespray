@@ -10,7 +10,8 @@
 * Install Vagrant -- https://www.vagrantup.com/downloads.html
 * Install Ansible -- "sudo apt-get install ansible"
 * Install VirtualBox -- "sudo apt-get install virtualbox"
-* Clone this repo and checkout the branch -- 
+* Clone this repo and checkout the branch -- git clone https://github.com/jdchandler88/kubespray && git checkout release-2.9-vagrantupdate
+
 ### RHEL7
 
 Deploy a Production Ready Kubernetes Cluster
