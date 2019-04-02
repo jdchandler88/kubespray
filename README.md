@@ -1,6 +1,7 @@
 ![Kubernetes Logo](https://raw.githubusercontent.com/kubernetes-sigs/kubespray/master/docs/img/kubernetes-logo.png)
 
 # jdchandler88 Notes
+* !Originaly, the plan was to use VirtualBox to host a machine that would host the Kubernetes cluster (nested virtualization). This *only* works for VirtualBox >6 AND for AMD cpus!!! Therefore, VMWare is chosen as the top layer of virutalization and VirtualBox for the nested machines. The reason for this is that in order create machines using Vagrant+VMWare, you must pay for a Vagrant plugin. Whew.
 * Changes to the Kubespray repo in this branch will be tested on Ubuntu 16.04 and RHEL7 flavors of Linux
 * The Vagrantfile will be updated to support separating of etcd, master, and node machines. Each machine will have its own name prefix.
 
