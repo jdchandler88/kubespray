@@ -1,5 +1,18 @@
 ![Kubernetes Logo](https://raw.githubusercontent.com/kubernetes-sigs/kubespray/master/docs/img/kubernetes-logo.png)
 
+# jdchandler88 Notes
+* Changes to the Kubespray repo in this branch will be tested on Ubuntu 16.04 and RHEL7 flavors of Linux
+* The Vagrantfile will be updated to support separating of etcd, master, and node machines. Each machine will have its own name prefix.
+
+## Steps
+### Ubuntu 16.04
+* Install Git -- "sudo apt-get install git"
+* Install Vagrant -- https://www.vagrantup.com/downloads.html
+* Install Ansible -- "sudo apt-get install ansible"
+* Install VirtualBox -- "sudo apt-get install virtualbox"
+* Clone this repo and checkout the branch -- 
+### RHEL7
+
 Deploy a Production Ready Kubernetes Cluster
 ============================================
 
