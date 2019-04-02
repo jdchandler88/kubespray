@@ -9,7 +9,7 @@
 * Install Git -- "sudo apt-get install git"
 * Install Vagrant -- https://www.vagrantup.com/downloads.html
 * Install Ansible -- "sudo apt-get install ansible"
-* Install VirtualBox -- "sudo apt-get install virtualbox"
+* Install VirtualBox -- https://websiteforstudents.com/virtualbox-6-0-is-out-heres-how-to-install-upgrade-on-ubuntu-16-04-18-04-18-10/ . Need VirtualBox >6; this enables nested virutalization.
 * Clone this repo and checkout the branch -- git clone https://github.com/jdchandler88/kubespray && git checkout release-2.9-vagrantupdate
 
 ### RHEL7
