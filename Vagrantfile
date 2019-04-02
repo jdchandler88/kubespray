@@ -49,7 +49,7 @@ $kube_master_instances = 2
 # Three nodes are kube nodes
 $kube_node_instances = 3
 #sum up the number of nodes so vagrant can create the appropriate number
-$num_instances = $etcd_instances + $master_instances + $node_instances;
+$num_instances = $etcd_instances + $kube_master_instances + $kube_node_instances;
 # The following only works when using the libvirt provider
 $kube_node_instances_with_disks = false
 $kube_node_instances_with_disks_size = "20G"
