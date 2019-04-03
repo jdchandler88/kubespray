@@ -181,7 +181,7 @@ Vagrant.configure("2") do |config|
         "kube_network_plugin": $network_plugin,
         "kube_network_plugin_multus": $multi_networking,
         "docker_keepcache": "1",
-        "download_run_once": "True",
+        "download_run_once": "False",
         "download_localhost": "False",
         "local_path_provisioner_enabled": "#{$local_path_provisioner_enabled}",
         "local_path_provisioner_claim_root": "#{$local_path_provisioner_claim_root}"
@@ -200,6 +200,7 @@ Vagrant.configure("2") do |config|
           ansible.host_key_checking = false
           ansible.raw_arguments = ["--forks=#{$num_instances}", "--flush-cache", "--ask-become-pass"]
           ansible.host_vars = host_vars
+          ansible.verbose = true
           #ansible.tags = ['download']
           ansible.groups = {
             "etcd" => ["#{$instance_name_prefix}-[1:#{$etcd_instances}]"],
